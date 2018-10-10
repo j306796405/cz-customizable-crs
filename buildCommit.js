@@ -16,7 +16,7 @@ module.exports = function buildCommit(answers, config) {
   };
 
   function addScope(scope) {
-    if (!scope) return ''; //it could be type === WIP. So there is no scope
+    if (!scope) return ':'; //it could be type === WIP. So there is no scope
 
     return '(' + scope.trim() + '): ';
   }
@@ -50,7 +50,7 @@ module.exports = function buildCommit(answers, config) {
 
   var result = head;
   if (body) {
-    result += '\n\n' + body;
+    result += '' + body;
   }
   if (breaking) {
     var breakingPrefix = config && config.breakingPrefix ? config.breakingPrefix : 'BREAKING CHANGE:';
