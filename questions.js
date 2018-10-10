@@ -44,6 +44,7 @@ module.exports = {
           } else {
             scopes = scopes.concat(config.scopes);
           }
+          
           if (config.allowCustomScopes || scopes.length === 0) {
             scopes = scopes.concat([
               new cz.Separator(),
