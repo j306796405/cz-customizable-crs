@@ -33,42 +33,42 @@ module.exports = {
         message: messages.type,
         choices: config.types
       },
-      {
-        type: 'list',
-        name: 'scope',
-        message: messages.scope,
-        choices: function(answers) {
-          var scopes = [];
-          if (scopeOverrides[answers.type]) {
-            scopes = scopes.concat(scopeOverrides[answers.type]);
-          } else {
-            scopes = scopes.concat(config.scopes);
-          }
-          
-          if (config.allowCustomScopes || scopes.length === 0) {
-            scopes = scopes.concat([
-              new cz.Separator(),
-              { name: 'empty', value: false },
-              { name: 'custom', value: 'custom' }
-            ]);
-          }
-          return scopes;
-        },
-        when: function(answers) {
-          var hasScope = false;
-          if (scopeOverrides[answers.type]) {
-            hasScope = !!(scopeOverrides[answers.type].length > 0);
-          } else {
-            hasScope = !!(config.scopes && (config.scopes.length > 0));
-          }
-          if (!hasScope) {
-            answers.scope = 'custom';
-            return false;
-          } else {
-            return isNotWip(answers);
-          }
-        }
-      },
+      // {
+      //   type: 'list',
+      //   name: 'scope',
+      //   message: messages.scope,
+      //   choices: function(answers) {
+      //     var scopes = [];
+      //     if (scopeOverrides[answers.type]) {
+      //       scopes = scopes.concat(scopeOverrides[answers.type]);
+      //     } else {
+      //       scopes = scopes.concat(config.scopes);
+      //     }
+
+      //     if (config.allowCustomScopes || scopes.length === 0) {
+      //       scopes = scopes.concat([
+      //         new cz.Separator(),
+      //         { name: 'empty', value: false },
+      //         { name: 'custom', value: 'custom' }
+      //       ]);
+      //     }
+      //     return scopes;
+      //   },
+      //   when: function(answers) {
+      //     var hasScope = false;
+      //     if (scopeOverrides[answers.type]) {
+      //       hasScope = !!(scopeOverrides[answers.type].length > 0);
+      //     } else {
+      //       hasScope = !!(config.scopes && (config.scopes.length > 0));
+      //     }
+      //     if (!hasScope) {
+      //       answers.scope = 'custom';
+      //       return false;
+      //     } else {
+      //       return isNotWip(answers);
+      //     }
+      //   }
+      // },
       // {
       //   type: 'input',
       //   name: 'scope',
@@ -93,23 +93,23 @@ module.exports = {
         name: 'body',
         message: messages.body
       },
-      {
-        type: 'input',
-        name: 'breaking',
-        message: messages.breaking,
-        when: function(answers) {
-          if (config.allowBreakingChanges && config.allowBreakingChanges.indexOf(answers.type.toLowerCase()) >= 0) {
-            return true;
-          }
-          return false; // no breaking changes allowed unless specifed
-        }
-      },
-      {
-        type: 'input',
-        name: 'footer',
-        message: messages.footer,
-        when: isNotWip
-      },
+      // {
+      //   type: 'input',
+      //   name: 'breaking',
+      //   message: messages.breaking,
+      //   when: function(answers) {
+      //     if (config.allowBreakingChanges && config.allowBreakingChanges.indexOf(answers.type.toLowerCase()) >= 0) {
+      //       return true;
+      //     }
+      //     return false; // no breaking changes allowed unless specifed
+      //   }
+      // },
+      // {
+      //   type: 'input',
+      //   name: 'footer',
+      //   message: messages.footer,
+      //   when: isNotWip
+      // },
       {
         type: 'expand',
         name: 'confirmCommit',
