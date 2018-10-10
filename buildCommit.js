@@ -16,13 +16,13 @@ module.exports = function buildCommit(answers, config) {
   };
 
   function addScope(scope) {
-    if (!scope) return ': '; //it could be type === WIP. So there is no scope
+    if (!scope) return ''; //it could be type === WIP. So there is no scope
 
     return '(' + scope.trim() + '): ';
   }
 
   function addSubject(subject) {
-    if (!subject) return ': ';
+    if (!subject) return '';
     return subject.trim();
   }
 
